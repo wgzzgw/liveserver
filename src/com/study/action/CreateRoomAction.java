@@ -61,22 +61,22 @@ public class CreateRoomAction extends IAction{
 			int updateCount=stmt.getUpdateCount();//返回受影响的行数
 			//插入成功
 			if (updateCount > 0) {
-				String queryRoomIdSql = "SELECT `room_id`,`watcher_nums` FROM `RoomInfo` WHERE `user_id`=\""
+				String queryRoomIdSql = "SELECT `room_id`,`wathcer` FROM `RoomInfo` WHERE `user_id`=\""
 						+ userId + "\"";
 				stmt.execute(queryRoomIdSql);
 				ResultSet resultSet = stmt.getResultSet();
-				if (resultSet != null && !resultSet.wasNull()) {
+				if (resultSet != null&&resultSet.next()) {
 					RoomInfo roomInfo = new RoomInfo();
 					while (resultSet.next()) {
 						int roomId = resultSet.getInt("room_id");
-						int watchNums = resultSet.getInt("watcher_nums");
+						int watchNums = resultSet.getInt("wathcer");
 						roomInfo.roomId = roomId;
 						roomInfo.userId = userId;
 						roomInfo.userName = userName;
 						roomInfo.userAvatar = userAvatar;
 						roomInfo.liveTitle = liveTitle;
 						roomInfo.liveCover = liveCover;
-						roomInfo.watcherNums = watchNums;
+						roomInfo.wathcer= watchNums;
 					}
 					RoomListManager.getInstance().updateRoom(""+ roomInfo.roomId);//直播房间列表更新
 					WatcherListManager.getInstance().addRoom(""+ roomInfo.roomId);//观众列表更新

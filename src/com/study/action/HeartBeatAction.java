@@ -46,7 +46,7 @@ public class HeartBeatAction extends IAction {
 					+ roomIdParam + "\"";
 			stmt.execute(queryRoomIdSql);
 			ResultSet resultSet = stmt.getResultSet();
-			if (resultSet != null && !resultSet.next()) {
+			if (resultSet != null && resultSet.next()) {
 				while (resultSet.next()) {
 					String userId = resultSet.getString("user_id");
 					if (userId != null && userId.equals(userIdParam)) {

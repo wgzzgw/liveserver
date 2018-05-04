@@ -44,7 +44,7 @@ public class RoomListManager {
 			String getRoomIdSql = "SELECT `room_id` FROM `RoomInfo`";
 			stmt.execute(getRoomIdSql);
 			ResultSet resultSet = stmt.getResultSet();
-			if (resultSet != null && !resultSet.next()) {
+			if (resultSet != null && resultSet.next()) {
 				List<String> roomList = new ArrayList<String>();
 				while (resultSet.next()) {
 					String roomId = resultSet.getInt("room_id") + "";

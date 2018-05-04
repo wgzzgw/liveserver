@@ -45,7 +45,7 @@ public class QuitRoomAction extends IAction{
 					+ roomIdParam + "\"";
 			stmt.execute(queryRoomIdSql);
 			ResultSet resultSet = stmt.getResultSet();
-			if (resultSet != null && !resultSet.next()) {
+			if (resultSet != null && resultSet.next()) {
 				while (resultSet.next()) {
 					int watchNums = resultSet.getInt("watcher");
 					String userId = resultSet.getString("user_id");

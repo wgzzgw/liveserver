@@ -9,5 +9,5 @@ public class RoomInfo {
 	public String userAvatar;//主播头像
 	public String liveCover;//直播封面
 	public String liveTitle;//直播标题
-	public int watcherNums;//观看人数
+	public int wathcer;//观看人数
 }
