@@ -65,7 +65,7 @@ public class CreateRoomAction extends IAction{
 						+ userId + "\"";
 				stmt.execute(queryRoomIdSql);
 				ResultSet resultSet = stmt.getResultSet();
-				if (resultSet != null&&resultSet.next()) {
+				if (resultSet != null) {
 					RoomInfo roomInfo = new RoomInfo();
 					while (resultSet.next()) {
 						int roomId = resultSet.getInt("room_id");

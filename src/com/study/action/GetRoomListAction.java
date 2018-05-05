@@ -36,7 +36,7 @@ public class GetRoomListAction  extends IAction{
 			stmt.execute(queryRoomListSql);
 			
 			ResultSet resultSet = stmt.getResultSet();
-			if (resultSet != null&&resultSet.next()) {
+			if (resultSet != null) {
 			//查询成功
 					//存储查询后的数据-list
 				List<RoomInfo> roomList = new ArrayList<RoomInfo>();
@@ -47,7 +47,7 @@ public class GetRoomListAction  extends IAction{
 					roomInfo.userName = resultSet.getString("user_name");
 					roomInfo.userAvatar = resultSet.getString("user_avatar");
 					roomInfo.liveTitle = resultSet.getString("live_title");
-					roomInfo.liveCover = resultSet.getString("live_poster");
+					roomInfo.liveCover = resultSet.getString("live_cover");
 					roomInfo.wathcer = resultSet.getInt("wathcer");
 					roomList.add(roomInfo);
 				}

@@ -39,13 +39,13 @@ public class JoinRoomAction extends IAction{
 			stmt = dbConnection.createStatement();
 			// 数据库就已经完全建立起来了。
 
-			String queryRoomIdSql = "SELECT `user_id`,`watcher` FROM `RoomInfo` WHERE `room_id`=\""
-					+ roomIdParam + "\"";
+			String queryRoomIdSql = "SELECT `user_id`,`wathcer` FROM `RoomInfo` WHERE `room_id`="
+					+ roomIdParam ;
 			stmt.execute(queryRoomIdSql);
 			ResultSet resultSet = stmt.getResultSet();
-			if (resultSet != null && resultSet.next()) {
+			if (resultSet != null) {
 				while (resultSet.next()) {
-					int watchNums = resultSet.getInt("watcher_nums");
+					int watchNums = resultSet.getInt("wathcer");
 					String userId = resultSet.getString("user_id");
 					if (userId != null && userId.equals(userIdParam)) {
 						// 说明是主播加入,更新room的最后使用时间
@@ -83,7 +83,7 @@ public class JoinRoomAction extends IAction{
 
 		int fianlWatchNums = (watchNums + 1);
 
-		String updateWatcherNumsSql = "UPDATE `RoomInfo` SET `watcher`=\""
+		String updateWatcherNumsSql = "UPDATE `RoomInfo` SET `wathcer`=\""
 				+ fianlWatchNums + "\" WHERE `room_id`=\"" + roomIdParam + "\"";
 		stmt.execute(updateWatcherNumsSql);
 

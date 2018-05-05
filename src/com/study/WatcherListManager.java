@@ -47,7 +47,7 @@ public class WatcherListManager {
 	 * 更新房间用户
 	 */
 	public void updateRoomUser(final String roomId, String userId){
-		if(!watcherMap.containsKey(roomId)){
+		if(watcherMap.containsKey(roomId)){
 			return;
 		}
 		//获取观众集合

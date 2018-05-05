@@ -42,11 +42,11 @@ public class HeartBeatAction extends IAction {
 			dbConnection = SqlManager.getConnection();
 			stmt = dbConnection.createStatement();
 
-			String queryRoomIdSql = "SELECT `user_id` FROM `RoomInfo` WHERE `room_id`=\""
-					+ roomIdParam + "\"";
+			String queryRoomIdSql = "SELECT `user_id` FROM `RoomInfo` WHERE `room_id`="
+					+ roomIdParam;
 			stmt.execute(queryRoomIdSql);
 			ResultSet resultSet = stmt.getResultSet();
-			if (resultSet != null && resultSet.next()) {
+			if (resultSet != null) {
 				while (resultSet.next()) {
 					String userId = resultSet.getString("user_id");
 					if (userId != null && userId.equals(userIdParam)) {

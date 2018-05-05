@@ -41,13 +41,13 @@ public class QuitRoomAction extends IAction{
 			stmt = dbConnection.createStatement();
 			
 
-			String queryRoomIdSql = "SELECT `user_id`,`watcher` FROM `RoomInfo` WHERE `room_id`=\""
-					+ roomIdParam + "\"";
+			String queryRoomIdSql = "SELECT `user_id`,`wathcer` FROM `RoomInfo` WHERE `room_id`="
+					+ roomIdParam ;
 			stmt.execute(queryRoomIdSql);
 			ResultSet resultSet = stmt.getResultSet();
-			if (resultSet != null && resultSet.next()) {
+			if (resultSet != null) {
 				while (resultSet.next()) {
-					int watchNums = resultSet.getInt("watcher");
+					int watchNums = resultSet.getInt("wathcer");
 					String userId = resultSet.getString("user_id");
 					if (userId != null && userId.equals(userIdParam)) {
 						// 说明是主播退出
@@ -119,7 +119,7 @@ public class QuitRoomAction extends IAction{
 		Statement stmt = null;
 		dbConnection = SqlManager.getConnection();
 		stmt = dbConnection.createStatement();
-		String updateWatcherNumsSql = "UPDATE `RoomInfo` SET `watcher`=\""
+		String updateWatcherNumsSql = "UPDATE `RoomInfo` SET `wathcer`=\""
 				+ fianlWatchNums + "\" WHERE `room_id`=\"" + roomIdParam + "\"";
 		stmt.execute(updateWatcherNumsSql);
 		int updateCount = stmt.getUpdateCount();// 获取受影响的行数
